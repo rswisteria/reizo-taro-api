@@ -5,7 +5,7 @@ class StoragesController < ApplicationController
   def create
     case params['queryResult']['parameters']['request']
     when '入れる'
-      st = Storage.find_or_initialized_by(food: params['queryResult']['parameters']['food'])
+      st = Storage.find_or_initialize_by(food: params['queryResult']['parameters']['food'])
       st.count = 0 if st.count.nil?
       st.count += params['queryResult']['parameters']['count'].to_i
       st.save!
