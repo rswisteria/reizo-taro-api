@@ -88,6 +88,5 @@ test:
 #
 production:
   <<: *default
-  database: reizo-taro_production
-  username: reizo-taro
-  password: <%= ENV['REIZO-TARO_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABSSE_URL'] %>
+  
