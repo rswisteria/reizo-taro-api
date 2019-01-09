@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :storage, only: %(index create)
+  resources :storages, only: %(index create)
 end
