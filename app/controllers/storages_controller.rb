@@ -7,7 +7,7 @@ class StoragesController < ApplicationController
     when '入れる'
       st = Storage.find_or_initialize_by(food: params['queryResult']['parameters']['food'])
       st.count = 0 if st.count.nil?
-      st.count += params['queryResult']['parameters']['count']&.to_i || 1
+      st.count += params['queryResult']['parameters']['count'].blank? ? 0 : params['queryResult']['parameters']['count']&.to_i
       st.save!
     when '出す'
       st = Storage.find_by(food: params['queryResult']['parameters']['food'])
@@ -18,7 +18,7 @@ class StoragesController < ApplicationController
           st.count = st.count / 2
           st.save!
         else
-          st.count -= params['queryResult']['parameters']['count']&.to_i || 1
+          st.count -= params['queryResult']['parameters']['count'].blank? ? 0 : params['queryResult']['parameters']['count']&.to_i
           st.save!
         end
       end
